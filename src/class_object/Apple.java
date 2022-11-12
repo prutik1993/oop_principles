@@ -10,7 +10,6 @@ public class Apple {
     public String color; // null
     public double price; // 0.0
     public String taste; // null
-
     @Override
     public String toString() {
         return "Apple{" +
