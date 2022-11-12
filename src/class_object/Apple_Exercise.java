@@ -46,7 +46,8 @@ public class Apple_Exercise {
         System.out.println("Apple 3 = " + apple3);
 
         System.out.println("\n===========Apple Array===========\n");
-        // Store your apples ib the array
+
+        // Store your apples in the array
         Apple[] apples = {apple1, apple2, apple3};
         System.out.println(Arrays.toString(apples));
         System.out.println(apples.length);
@@ -59,6 +60,28 @@ public class Apple_Exercise {
                 count++;
         }
         System.out.println(count);
+
+
+        System.out.println("\n--------------Task-2--------------\n");
+
+        Apple[] arr = {new Apple("Yellow", 0.5, "Sour"),
+                new Apple("Red", 0.75, "Sour"),
+                new Apple("Green", 0.5, "Sour"),
+                new Apple("Yellow", 1.0, "Sweet"),
+                new Apple("Yellow", 1.5, "Sweet")};
+        for (Apple apple : arr) {
+            System.out.println(apple);
+        }
+
+        System.out.println("\n--------------Retrieve each info for each apple object and print it--------------\n");
+
+        for (Apple apple : arr) {
+            System.out.println(apple.color);
+            System.out.println(apple.price);
+            System.out.println(apple.taste);
+            System.out.println("-------------");
+        }
+
 
 
 
