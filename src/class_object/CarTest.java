@@ -2,9 +2,10 @@ package class_object;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class CarTest {
-    public static void main(String[] args) {
+    public static <Cars> void main(String[] args) {
         Car car1 = new Car("White", "BMW", "X6", 2020, 15000);
         Car car2 = new Car("Black", "Tesla", "S", 2023, 20000);
         Car car3 = new Car("Beige", "Toyota", "Camry", 2018, 10000);
@@ -52,6 +53,24 @@ public class CarTest {
         expected: 3
          */
 
+        System.out.println("\n==========How many blue or beige or 2023 cars==========\n");
+        int counter = 0;
+        for (Car car : cars) {
+            if(car.color.equals("Blue") || car.color.equals("Beige") || car.year == 2023) counter++;
+        }
+        System.out.println(counter);
+
+        System.out.println("\n==========Remove all the Tesla cars==========\n");
+        Iterator <Car>  teslaIterator =  cars.iterator();
+        while(teslaIterator.hasNext()){
+           // Car c = teslaIterator.next();
+            if(teslaIterator.next().made.equals("Tesla"))teslaIterator.remove();
+        }
+        System.out.println(cars.size());
+
+//        System.out.println("\n==========Remove all the Tesla cars with removeIf==========\n");
+//        cars.removeIf(c -> c.made.equals("Tesla"));
+//        System.out.println(cars.size());
 
     }
 }
