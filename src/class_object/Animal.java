@@ -16,8 +16,6 @@ public class Animal {
     public Animal(String name, int age, boolean isCarnivore, boolean isHerbivore, boolean isOmnivore) {
 
         this(name, age); // -> have to be on top of the block/only  one constructor can be added
-        System.out.println("This is 5-args constructor");
-
         this.isCarnivore = isCarnivore;
         this.isHerbivore = isHerbivore;
         this.isOmnivore = isOmnivore;
@@ -37,9 +35,15 @@ public class Animal {
     }
 
     public Animal(String name, int age) {
-        System.out.println("This ia 2-args constructor");
         this.name = name;
         this.age = age;
+    }
+
+    @Override   // Execute the code before whenever an Animal object is garbage collected
+               // You will override finalize() method if you would like to execute a block of right
+              // after you object is destroyed
+    protected void finalize() throws Throwable {
+        System.out.println(getClass().getName() + " " + this.name  + " object is destroyed");
     }
 
     public static void main(String[] args) {

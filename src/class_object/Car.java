@@ -1,6 +1,8 @@
 package class_object;
 
 public class Car {
+    public String make;
+
     //default constructor
     public Car(){
 

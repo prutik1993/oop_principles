@@ -18,7 +18,6 @@ public class Sword {
 
     }
     // 2. Instance variables
-
     // Static -> belong to the Class. What does every sword has?
     public static final boolean hasHandle = true;
     public  static boolean isSharp;
