@@ -2,6 +2,7 @@ package oop_principles.encapsulation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Employee_Exercise {
     public static void main(String[] args) {
@@ -54,24 +55,82 @@ public class Employee_Exercise {
 
        Find the company
         Manager = Saeed works at Verizon
-        System Architect = Yildiz works at USBank
+        "System Architect =" Yildiz works at USBank
         Scrum Master = Jeremiah works at USBank
 
    */
         int teslaEmployees = 0, usbankEmployees = 0, verizonEmployees = 0;
+        int tester = 0, developer = 0, manager = 0, systemArchitect = 0, scrumMaster = 0, designer = 0;
+
         Employee managerEmployee = new Employee();
         Employee systemArchitectEmployee = new Employee();
-        Employee ScrumMasterEmployee = new Employee();
+        Employee scrumMasterEmployee = new Employee();
 
         for (Employee employee : employees) {
             if(employee.getCompany().getName().equals("Tesla")) teslaEmployees++;
             else if(employee.getCompany().getName().equals("USBank"))usbankEmployees++;
             else verizonEmployees++;
+
+            if(employee.getJobPosition().equals("Tester")) tester++;
+            else if(employee.getJobPosition().equals("Developer")) developer++;
+            else if(employee.getJobPosition().equals("System Architect")){
+                systemArchitect++;
+                systemArchitectEmployee = employee;
+            }
+            else if(employee.getJobPosition().equals("Manager")) {
+                manager++;
+                managerEmployee = employee;
+            }
+            else if(employee.getJobPosition().equals("Scrum Master")) {
+                scrumMaster++;
+                scrumMasterEmployee = employee;
+            }
+            else designer++;
+
         }
+        System.out.println("\n------Employee numbers and each company------\n");
 
         System.out.println("Employee numbers for each company");
         System.out.println("Tesla = " + teslaEmployees);
         System.out.println("USBank = " + usbankEmployees);
         System.out.println("Verizon = " + verizonEmployees);
+
+        System.out.println("\n------Employee numbers for each position------\n");
+
+        System.out.println("Developers = " + developer);
+        System.out.println("System Architect = " + systemArchitect);
+        System.out.println("Scrum Master = " + scrumMaster);
+        System.out.println("Designer = " + designer);
+        System.out.println("Tester = " + tester);
+        System.out.println("Manager = " + manager);
+
+        System.out.println("\n------Find youngest------\n");
+
+        Employee youngestTester = employees.stream().
+                filter(e -> e.getJobPosition().equals("Tester")).min(Comparator.comparingInt(Employee::getAge)).get();
+        System.out.println("Youngest tester = " + youngestTester.getFullName() +
+                " works at " + youngestTester.getCompany().getName());
+
+        Employee youngestDeveloper = employees.stream().
+                filter(e -> e.getJobPosition().equals("Developer")).min(Comparator.comparingInt(Employee::getAge)).get();
+        System.out.println("Youngest developer = " + youngestDeveloper.getFullName() +
+                " works at " + youngestDeveloper.getCompany().getName());
+
+        Employee youngestDesigner = employees.stream().
+                filter(e -> e.getJobPosition().equals("Designer")).min(Comparator.comparingInt(Employee::getAge)).get();
+        System.out.println("Youngest designer = " + youngestDesigner.getFullName() +
+                " works at " + youngestDesigner.getCompany().getName());
+
+        System.out.println("\n-----------Find the company-----------\n");
+
+        System.out.println("Manager = " + managerEmployee.getFullName() + " works at "
+                + managerEmployee.getCompany().getName());
+        System.out.println("System Architect = " + systemArchitectEmployee.getFullName() +
+                " works at " + systemArchitectEmployee.getCompany().getName());
+        System.out.println("Scrum Master = " + scrumMasterEmployee.getFullName() +
+                " works at " + scrumMasterEmployee.getCompany().getName());
+
+
+
     }
 }
