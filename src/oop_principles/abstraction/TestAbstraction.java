@@ -17,6 +17,9 @@ public class TestAbstraction {
         System.out.println(s2);
         System.out.println(i2);
 
+        Nokia n1 = new Nokia();
+
+
 
 
 
